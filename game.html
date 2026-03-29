@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TechGames</title>
+<link rel="icon" href="logo.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+body{
+margin:0;
+font-family:Inter;
+color:#e5e7eb;
+background:linear-gradient(135deg,#0f172a,#020617);
+min-height:100vh;
+}
+
+/* HEADER */
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 25px;
+background:rgba(15,23,42,0.85);
+border-bottom:1px solid #3b82f6;
+box-shadow:0 0 15px rgba(59,130,246,0.3);
+}
+
+.logo{
+font-family:Orbitron;
+color:#3b82f6;
+font-size:1.3rem;
+letter-spacing:2px;
+}
+
+/* MENU GRID */
+.home{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:25px;
+padding:30px;
+max-width:900px;
+margin:auto;
+}
+
+.card{
+background:linear-gradient(145deg, rgba(30,41,59,0.9), rgba(15,23,42,0.9));
+border-radius:16px;
+padding:35px;
+text-align:center;
+box-shadow:0 0 20px rgba(59,130,246,0.25);
+transition:0.3s;
+border:1px solid rgba(59,130,246,0.2);
+}
+
+.card:hover{
+transform:translateY(-6px) scale(1.04);
+box-shadow:0 0 30px rgba(59,130,246,0.6);
+}
+
+.icon{
+font-size:60px;
+margin-bottom:15px;
+}
+
+/* JOGO BOX */
+.box{
+background:rgba(30,41,59,0.95);
+padding:25px;
+border-radius:14px;
+box-shadow:0 0 25px rgba(59,130,246,0.4);
+display:inline-block;
+max-width:95%;
+}
+
+.btn{
+padding:10px 14px;
+margin-top:10px;
+border:none;
+background:linear-gradient(145deg,#2563eb,#3b82f6);
+color:white;
+border-radius:8px;
+cursor:pointer;
+transition:0.25s;
+font-weight:500;
+}
+
+.area{
+text-align:center;
+padding:30px;
+}
+
+canvas{
+background:#f1f5f9;
+border-radius:10px;
+margin-top:15px;
+}
+
+/* CONTROLES MOBILE */
+.controls{
+margin-top:10px;
+}
+
+.controls button{
+padding:10px;
+margin:3px;
+font-size:18px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">TECH GAMES</div>
+<a href="portal.html" class="btn">⬅ Portal</a>
+</header>
+
+<div class="home" id="home">
+<div class="card"><div class="icon">❌</div><button class="btn" onclick="velha()">Jogar</button></div>
+<div class="card"><div class="icon">🐦</div><button class="btn" onclick="flappy()">Jogar</button></div>
+<div class="card"><div class="icon">🦖</div><button class="btn" onclick="dino()">Jogar</button></div>
+</div>
+
+<div class="area" id="area"></div>
+
+<script>
+function voltar(){
+area.innerHTML="";
+home.style.display="grid";
+}
+
+/* ================= JOGO DA VELHA CORRIGIDO ================= */
+function velha(){
+home.style.display="none";
+
+area.innerHTML=`
+<div class="box">
+<h2>Jogo da Velha</h2>
+<div id="status">Sua vez</div>
+<div id="board" style="display:grid;grid-template-columns:repeat(3,80px);gap:5px;justify-content:center;margin-top:10px;"></div>
+<br>
+<button class="btn" onclick="velha()">Reiniciar</button>
+<button class="btn" onclick="voltar()">Voltar</button>
+</div>`;
+
+let board=["","","","","","","","",""];
+let boardDiv=document.getElementById("board");
+let status=document.getElementById("status");
+let gameOver=false;
+
+function checkWin(p){
+return (
+(board[0]==p&&board[1]==p&&board[2]==p)||
+(board[3]==p&&board[4]==p&&board[5]==p)||
+(board[6]==p&&board[7]==p&&board[8]==p)||
+(board[0]==p&&board[3]==p&&board[6]==p)||
+(board[1]==p&&board[4]==p&&board[7]==p)||
+(board[2]==p&&board[5]==p&&board[8]==p)||
+(board[0]==p&&board[4]==p&&board[8]==p)||
+(board[2]==p&&board[4]==p&&board[6]==p)
+);
+}
+
+function ai(){
+for(let i=0;i<9;i++){
+if(board[i]==""){
+board[i]="O";
+if(checkWin("O")) return;
+board[i]="";
+}
+}
+
+for(let i=0;i<9;i++){
+if(board[i]==""){
+board[i]="X";
+if(checkWin("X")){board[i]="O"; return;}
+board[i]="";
+}
+}
+
+if(board[4]==""){board[4]="O";return;}
+
+let empty=[];
+for(let i=0;i<9;i++) if(board[i]=="") empty.push(i);
+board[empty[Math.floor(Math.random()*empty.length)]]="O";
+}
+
+function render(){
+boardDiv.innerHTML="";
+
+board.forEach((v,i)=>{
+let btn=document.createElement("button");
+btn.style.width="80px";
+btn.style.height="80px";
+btn.style.fontSize="30px";
+btn.innerText=v;
+
+btn.onclick=function(){
+if(board[i]!=="" || gameOver) return;
+
+board[i]="X";
+
+if(checkWin("X")){
+status.innerText="Você venceu!";
+gameOver=true;
+render();
+return;
+}
+
+if(!board.includes("")){
+status.innerText="Empate!";
+gameOver=true;
+render();
+return;
+}
+
+ai();
+
+if(checkWin("O")){
+status.innerText="IA venceu!";
+gameOver=true;
+render();
+return;
+}
+
+render();
+};
+
+boardDiv.appendChild(btn);
+});
+}
+
+render();
+}
+
+/* ================= FLAPPY ================= */
+function flappy(){
+home.style.display="none";
+
+area.innerHTML=`
+<div class="box">
+<h2>Flappy Bird</h2>
+<div id="score">Pontos: 0</div>
+<canvas id="f" width="300" height="400"></canvas>
+<div class="controls">
+<button onclick="jump()">Pular</button>
+</div>
+<br>
+<button class="btn" onclick="flappy()">Reiniciar</button>
+<button class="btn" onclick="voltar()">Voltar</button>
+</div>`;
+
+let c=document.getElementById("f");
+let ctx=c.getContext("2d");
+
+let y=200,vel=0,grav=0.3;
+let pipes=[],score=0;
+
+window.jump=function(){vel=-6;}
+document.onclick=jump;
+document.onkeydown=jump;
+
+function loop(){
+ctx.fillStyle="#38bdf8";
+ctx.fillRect(0,0,300,400);
+
+vel+=grav;
+y+=vel;
+
+if(y>400||y<0){gameOver();return;}
+
+if(pipes.length===0||pipes[pipes.length-1].x<180){
+pipes.push({x:300,top:Math.random()*150});
+}
+
+ctx.fillStyle="#22c55e";
+pipes.forEach(p=>{
+p.x-=2;
+ctx.fillRect(p.x,0,50,p.top);
+ctx.fillRect(p.x,p.top+170,50,400);
+
+if(p.x<60&&p.x>0&&(y<p.top||y>p.top+170)){gameOver();}
+if(p.x===0){score++;document.getElementById("score").innerText="Pontos: "+score;}
+});
+
+ctx.fillStyle="#f59e0b";
+ctx.fillRect(50,y,20,20);
+
+requestAnimationFrame(loop);
+}
+
+function gameOver(){
+area.innerHTML=`
+<div class="box">
+<h2>Game Over</h2>
+<p>Pontos: ${score}</p>
+<button class="btn" onclick="flappy()">Reiniciar</button>
+<button class="btn" onclick="voltar()">Voltar</button>
+</div>`;
+}
+
+loop();
+}
+
+/* ================= DINO COM CORES ================= */
+function dino(){
+home.style.display="none";
+
+area.innerHTML=`
+<div class="box">
+<h2>Dino Run</h2>
+<canvas id="d" width="400" height="200"></canvas>
+<br>
+<button class="btn" onclick="dino()">Reiniciar</button>
+<button class="btn" onclick="voltar()">Voltar</button>
+</div>`;
+
+let c=document.getElementById("d");
+let ctx=c.getContext("2d");
+
+let y=150,vel=0,grav=0.6;
+let cactus=400;
+
+document.onkeydown=jump;
+document.onclick=jump;
+
+function jump(){
+if(y==150) vel=-10;
+}
+
+function loop(){
+ctx.fillStyle="#fef3c7";
+ctx.fillRect(0,0,400,200);
+
+vel+=grav;
+y+=vel;
+if(y>150){y=150;vel=0;}
+
+cactus-=5;
+if(cactus<0) cactus=400;
+
+ctx.fillStyle="#000";
+ctx.fillRect(50,y,20,20);
+
+ctx.fillStyle="#22c55e";
+ctx.fillRect(cactus,150,20,20);
+
+if(cactus<70 && cactus>40 && y>130){
+area.innerHTML=`<div class="box"><h2>Game Over</h2>
+<button class="btn" onclick="dino()">Reiniciar</button>
+<button class="btn" onclick="voltar()">Voltar</button></div>`;
+return;
+}
+
+requestAnimationFrame(loop);
+}
+
+loop();
+}
+</script>
+
+</body>
+</html>

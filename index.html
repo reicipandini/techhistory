@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechHistory | Do incio à IA</title>
+   <link rel="icon" href="logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+         
+            --preto-petroleo: #030712;
+            --azul-cobalto: #38bdf8;
+            --branco-neve: #f8fafc;
+            --cinza-suave: #94a3b8;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--preto-petroleo);
+            color: var(--branco-neve);
+            overflow: hidden; 
+
+        #splash {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            
+
+            background-image: url("info.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+        }
+
+        #splash::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--azul-cobalto);
+            border-radius: 50%;
+            filter: blur(150px);
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        .content-box {
+            position: relative;
+            z-index: 1; 
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            letter-spacing: -3px;
+            line-height: 0.95;
+            text-transform: uppercase;
+            
+
+            background: linear-gradient(180deg, #ffffff 0%, #a7e0f8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 15px rgba(56, 189, 248, 0.5));
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            text-decoration-style: green;
+            margin-bottom: 3rem;
+            letter-spacing: 1px;
+        }
+
+:root {
+    --bg-principal: #f8fafc; /* Branco Gelo */
+    --detalhe-blue: #3b82f6; /* Azul Sereno */
+    --texto-titulo: #1e293b; /* Cinza Escuro */
+}
+
+footer {
+    width: 100%;
+    padding: 0.2rem 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background: rgba(3, 7, 18, 0.8);
+    color: var(--branco-neve);
+    text-align: center;
+    backdrop-filter: blur(5px);
+    font-size: 0.9rem;
+    z-index: 10;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-icons a {
+    color: var(--azul-cobalto);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: white;
+    transform: scale(1.2);
+}
+
+.btn-portal {
+    padding: 1.2rem 3.5rem;
+    background-color: transparent;
+    color: var(--detalhe-blue);
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    
+
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+
+.btn-portal::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(59, 130, 246, 0.2),
+        transparent
+    );
+    transition: all 0.6s;
+}
+
+.btn-portal:hover::before {
+    left: 100%;
+}
+
+
+.btn-portal:hover {
+    color: white;
+    background-color: var(--detalhe-blue);
+    border-color: var(--detalhe-blue);
+    box-shadow: 0 0 25px rgba(59, 130, 246, 0.4);
+    transform: translateY(-3px) scale(1.02);
+}
+
+
+.btn-portal:active {
+    transform: scale(0.95);
+}
+        @media (max-width: 768px) {
+            h1 { font-size: 2.8rem; letter-spacing: -1px; }
+            .subtitle { font-size: 1.1rem; }
+        }
+
+        @media (max-width: 768px) {
+
+    .history-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    .hero-box img {
+        height: 200px;
+    }
+
+    header {
+        padding: 0 1rem;
+    }
+
+    .logo {
+        font-size: 1rem;
+    }
+
+}
+    </style>
+</head>
+<body>
+
+    <div id="splash">
+        <div class="content-box">
+            <h1>A historia do <br> Mundo Digital</h1>
+
+            <p class="subtitle"><i>Viaje pela linha do tempo que mudou a humanidade.&#128187;</i></p>
+            
+            <a href="portal.html" target="_blank" class="btn-portal">Iniciar Experiência</a>
+        </div>
+    </div>
+<footer>
+    <footer>
+    <div style="text-align:center; font-size:0.65rem; padding:0.2rem 0; color:#94a3b8;">
+        &copy; 2026 TechHistory | 
+        <a href="https://www.instagram.com/reiicipandinii" target="_blank" style="color:#38bdf8; text-decoration:none;">Instagram</a> | 
+        <a href="https://www.github.com/reicipandini" target="_blank" style="color:#38bdf8; text-decoration:none;">GitHub</a>
+    </div>
+</footer>
+</footer>
+</body>
+</html>

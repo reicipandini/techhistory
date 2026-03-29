@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IA - TechHistory</title>
+<link rel="icon" href="logo.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg-principal: #f1f5f9;
+    --sidebar-bg: linear-gradient(180deg, #dbeafe, #bfdbfe);
+    --header-bg: #e0f2fe;
+    --texto-titulo: #0f172a;
+    --texto-corpo: #334155;
+    --detalhe-blue: #3b82f6;
+    --borda: #cbd5f5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-principal);
+    display: flex;
+}
+
+/* SIDEBAR */
+aside {
+    width: 260px;
+    background: var(--sidebar-bg);
+    border-right: 1px solid var(--borda);
+    position: fixed;
+    height: 100vh;
+    left: -260px;
+    transition: 0.3s;
+}
+
+aside.active {
+    left: 0;
+}
+
+.sidebar-brand {
+    padding: 2rem;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.3rem;
+    color: #1e3a8a;
+    border-bottom: 1px solid var(--borda);
+}
+
+.nav-item {
+    display: block;
+    padding: 12px;
+    color: var(--texto-corpo);
+    text-decoration: none;
+    border-radius: 8px;
+    margin: 8px;
+    background: rgba(255,255,255,0.4);
+    border: 1px solid var(--borda);
+}
+
+.nav-item:hover {
+    background: white;
+    color: var(--detalhe-blue);
+}
+
+/* MAIN */
+main {
+    flex: 1;
+    transition: 0.3s;
+}
+
+main.shift {
+    margin-left: 260px;
+}
+
+/* HEADER */
+header {
+    height: 65px;
+    background: var(--header-bg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    border-bottom: 1px solid var(--borda);
+}
+
+.menu-btn {
+    background: var(--detalhe-blue);
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.logo {
+    font-family: 'Orbitron', sans-serif;
+    color: #1e3a8a;
+    font-size: 1.3rem;
+}
+
+/* CONTEÚDO */
+.container {
+    max-width: 1300px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+}
+
+.history-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.history-card {
+    background: white;
+    border: 1px solid var(--borda);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-top: 4px solid #3b82f6;
+}
+
+.history-card button {
+    margin-top: 10px;
+    background: #3b82f6;
+    border: none;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.history-card button:hover {
+    background: #2563eb;
+}
+
+.detalhes {
+    display: none;
+    margin-top: 10px;
+}
+
+/* HERO */
+.hero-box {
+    background: white;
+    border: 1px solid var(--borda);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.hero-box img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.content-text {
+    padding: 2rem;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 40px;
+    border-top: 1px solid var(--borda);
+    background: white;
+}
+
+@media (max-width: 768px) {
+
+    .history-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    .hero-box img {
+        height: 200px;
+    }
+
+    header {
+        padding: 0 1rem;
+    }
+
+    .logo {
+        font-size: 1rem;
+    }
+</style>
+</head>
+
+<body>
+
+<aside id="sidebar">
+    <div class="sidebar-brand">TechHistory</div>
+    <a href="portal.html" class="nav-item">🏠 Início</a>
+    <a href="hardware.html" class="nav-item">🖥️ Hardware</a>
+    <a href="software.html" class="nav-item">💾 Software</a>
+    <a href="ia.html" class="nav-item">🤖 IA</a>
+    <a href="asis.html" class="nav-item"> 🪛 manutençao</a>
+    <a href="game.html" class="nav-item"> 🎮 techgames</a>
+</aside>
+
+<main id="main">
+<header>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    <div class="logo">TECH HISTORY</div>
+    <div></div>
+</header>
+
+<div class="container">
+
+<div class="hero-box">
+    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995">
+    <div class="content-text">
+        <h1>Inteligência Artificial</h1>
+        <p>
+        A Inteligência Artificial permite que máquinas aprendam, tomem decisões e realizem tarefas que antes só humanos conseguiam fazer.
+        </p>
+    </div>
+</div>
+
+<div class="history-grid">
+
+<div class="history-card">
+<h3>O que é IA</h3>
+<p>Máquinas que simulam inteligência humana.</p>
+<p class="detalhes">
+A Inteligência Artificial é uma área da computação que cria sistemas capazes de aprender, raciocinar e tomar decisões.
+Ela utiliza algoritmos e grandes volumes de dados para melhorar seu desempenho ao longo do tempo.
+Hoje, a IA está presente em assistentes virtuais, jogos, carros autônomos e muito mais.
+</p>
+<button onclick="toggleTexto(this)">Saiba mais</button>
+</div>
+
+<div class="history-card">
+<h3>Machine Learning</h3>
+<p>Aprendizado automático.</p>
+<p class="detalhes">
+Machine Learning é uma parte da IA onde os sistemas aprendem com dados.
+Em vez de serem programados com regras fixas, eles analisam padrões e melhoram com o tempo.
+Exemplo: recomendações da Netflix, Spotify e redes sociais.
+</p>
+<button onclick="toggleTexto(this)">Saiba mais</button>
+</div>
+
+<div class="history-card">
+<h3>IA no Dia a Dia</h3>
+<p>Presente em vários serviços.</p>
+<p class="detalhes">
+A IA está presente em celulares, redes sociais, mapas, assistentes virtuais e até jogos.
+Exemplos: reconhecimento facial, sugestões de vídeos, tradutores automáticos e chatbots.
+Ela facilita tarefas e melhora a experiência do usuário.
+</p>
+<button onclick="toggleTexto(this)">Saiba mais</button>
+</div>
+
+<div class="history-card">
+<h3>Redes Neurais</h3>
+<p>Baseadas no cérebro humano.</p>
+<p class="detalhes">
+Redes neurais são sistemas inspirados no funcionamento do cérebro humano.
+Elas são usadas para reconhecer imagens, voz, textos e padrões complexos.
+São essenciais para tecnologias modernas de IA.
+</p>
+<button onclick="toggleTexto(this)">Saiba mais</button>
+</div>
+
+<div class="history-card">
+<h3>Futuro da IA</h3>
+<p>Tecnologia em evolução.</p>
+<p class="detalhes">
+A Inteligência Artificial continuará evoluindo e impactando áreas como medicina, educação, transporte e indústria.
+Carros autônomos, robôs avançados e sistemas inteligentes serão cada vez mais comuns.
+</p>
+<button onclick="toggleTexto(this)">Saiba mais</button>
+</div>
+
+<div class="history-card">
+<h3>Riscos e Desafios</h3>
+<p>Uso responsável da tecnologia.</p>
+<p class="detalhes">
+Apesar dos benefícios, a IA traz desafios como privacidade, desemprego tecnológico e uso indevido.
+Por isso, é importante desenvolver e usar a tecnologia de forma ética e responsável.
+</p>
+<button onclick="toggleTexto(this)">Saiba mais</button>
+</div>
+
+</div>
+
+<footer>
+<p>Desenvolvido por  <a href="https://instagram.com/reiicipandinii"><I>Reice:)</I></p>
+</footer>
+
+</div>
+</main>
+
+<script>
+function toggleMenu(){
+let s=document.getElementById("sidebar");
+let m=document.getElementById("main");
+s.classList.toggle("active");
+m.classList.toggle("shift");
+}
+
+function toggleTexto(btn){
+let d=btn.parentElement.querySelector(".detalhes");
+d.style.display=d.style.display==="block"?"none":"block";
+btn.innerText=d.style.display==="block"?"Mostrar menos":"Saiba mais";
+}
+</script>
+
+</body>
+</html>

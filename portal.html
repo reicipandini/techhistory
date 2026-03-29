@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechHistory</title>
+    <link rel="icon" href="logo.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-principal: #f1f5f9;
+            --sidebar-bg: linear-gradient(180deg, #dbeafe, #bfdbfe);
+            --header-bg: #e0f2fe;
+            --texto-titulo: #0f172a;
+            --texto-corpo: #334155;
+            --detalhe-blue: #3b82f6;
+            --borda: #cbd5f5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-principal);
+            color: var(--texto-corpo);
+            display: flex;
+        }
+
+        
+        .home-btn {
+            position: fixed;
+            left: 10px;
+            bottom: 20px;
+            background: var(--detalhe-blue);
+            color: white;
+            padding: 12px 14px;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 18px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: 0.3s;
+            z-index: 1000;
+        }
+
+        .home-btn:hover {
+            transform: scale(1.1);
+        }
+
+        
+        aside {
+            width: 260px;
+            background: var(--sidebar-bg);
+            border-right: 1px solid var(--borda);
+            position: fixed;
+            height: 100vh;
+            left: -260px;
+            transition: 0.3s;
+        }
+
+        aside.active {
+            left: 0;
+            box-shadow: 5px 0 20px rgba(0,0,0,0.1);
+        }
+
+        .sidebar-brand {
+            padding: 2rem;
+            text-align: center;
+            font-family: 'Orbitron', sans-serif;
+            color: #1e3a8a;
+            border-bottom: 1px solid var(--borda);
+        }
+
+        .nav-group {
+            padding: 1rem;
+        }
+
+        .nav-item {
+            display: block;
+            padding: 12px;
+            color: var(--texto-corpo);
+            text-decoration: none;
+            border-radius: 8px;
+            margin-bottom: 5px;
+            transition: 0.2s;
+        }
+
+        .nav-item:hover {
+            background: white;
+            color: var(--detalhe-blue);
+            transform: translateX(5px);
+        }
+
+        /* MAIN */
+        main {
+            flex: 1;
+            transition: 0.3s;
+        }
+
+        main.shift {
+            margin-left: 260px;
+        }
+
+       
+        header {
+            height: 65px;
+            background: var(--header-bg);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+            border-bottom: 1px solid var(--borda);
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            color: #1e3a8a;
+            font-size: 1.4rem;
+            letter-spacing: 2px;
+        }
+
+        .menu-btn {
+            background: var(--detalhe-blue);
+            border: none;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+      
+        .container {
+            max-width: 1300px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .hero-box {
+            background: white;
+            border: 1px solid var(--borda);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .content-text {
+            padding: 2rem;
+        }
+
+        h1 {
+            color: var(--texto-titulo);
+            margin-bottom: 1rem;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 10px;
+            text-align: justify;
+        }
+
+        .history-card {
+    background: white;
+    border: 1px solid var(--borda);
+    padding: 1.5rem;
+    border-radius: 12px;
+    transition: 0.2s;
+    border-top: 4px solid #3b82f6;
+}
+
+.history-card h3 {
+    margin-bottom: 8px;
+}
+
+.history-card button {
+    margin-top: 10px;
+    background: #3b82f6;
+    border: none;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.history-card button:hover {
+    background: #2563eb;
+}
+
+.history-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+        .detalhes {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .history-card button {
+            margin-top: 10px;
+            background: var(--detalhe-blue);
+            border: none;
+            color: white;
+            padding: 6px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid var(--borda);
+            background: white;
+        }
+
+        @media (max-width: 768px) {
+
+    .history-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    .hero-box img {
+        height: 200px;
+    }
+
+    header {
+        padding: 0 1rem;
+    }
+
+    .logo {
+        font-size: 1rem;
+    }
+
+}
+    </style>
+</head>
+<body>
+
+<a href="index.html" class="home-btn">⌂</a>
+
+<aside id="sidebar">
+    <div class="sidebar-brand">TechHistory</div>
+   <div class="nav-group">
+    <a href="portal.html" class="nav-item">🏠 Início</a>
+    <a href="hardware.html" class="nav-item">🖥️ Hardware</a>
+    <a href="soft.html" class="nav-item">💾 Software</a>
+    <a href="ia.html" class="nav-item">🤖 IA</a>
+    <a href="asis.html" class="nav-item"> 🪛 manutençao</a>
+    <a href="game.html" class="nav-item"> 🎮 techgames</a>
+</div>
+</aside>
+
+<main id="main">
+    <header>
+        <button class="menu-btn" onclick="toggleMenu()" id="btn">☰</button>
+        <div class="logo">TECH HISTORY</div>
+        <div></div>
+    </header>
+
+    <div class="container">
+        <div class="hero-box">
+            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97">
+            <div class="content-text">
+                <h1>A Origem da Informática</h1>
+                <p>
+                A informática começou com máquinas mecânicas e evoluiu para sistemas digitais avançados, transformando o mundo moderno.
+                </p>
+
+                <div class="history-grid">
+
+                    <div class="history-card">
+                        <h3>Início da informatica Mecânica</h3>
+                        <p>As primeiras máquinas mecânicas surgiram no século XVII, como a calculadora de Pascal.
+                        Charles Babbage criou a Máquina Analítica e Ada Lovelace criou o primeiro algoritmo.</p>
+                        <p class="detalhes">
+                        A história da informática começou muito antes dos computadores modernos, com a necessidade humana de realizar cálculos de forma mais rápida e eficiente. Um dos primeiros instrumentos criados para esse fim foi o ábaco, utilizado por civilizações antigas por volta de 2000 a.C. Embora simples, ele foi essencial para o desenvolvimento do pensamento lógico e matemático.
+
+                        No século XVII, surgiram as primeiras máquinas mecânicas de cálculo. Blaise Pascal criou a Pascalina, capaz de realizar somas e subtrações por meio de engrenagens. Pouco tempo depois, Gottfried Wilhelm Leibniz desenvolveu uma máquina mais avançada, capaz de multiplicar e dividir. Essas invenções funcionavam sem eletricidade, utilizando apenas mecanismos físicos, e marcaram o início da informática mecânica.
+
+                        No século XIX, Charles Babbage projetou a Máquina Analítica, considerada o primeiro conceito de computador da história. Essa máquina já possuía ideias fundamentais presentes nos computadores atuais, como unidade de processamento, memória e entrada e saída de dados. Ela utilizaria cartões perfurados para executar instruções. Ada Lovelace, que trabalhou com Babbage, criou o primeiro algoritmo destinado a uma máquina, sendo reconhecida como a primeira programadora da história.
+
+                        No final do século XIX, Herman Hollerith desenvolveu uma máquina que utilizava cartões perfurados para processar dados do censo dos Estados Unidos. Essa tecnologia foi tão importante que deu origem à empresa que mais tarde se tornaria a IBM, uma das maiores empresas de tecnologia do mundo. Os cartões perfurados continuaram sendo utilizados por muitos anos como forma de armazenamento de dados.
+
+                        Já no século XX, surgiram os primeiros computadores eletrônicos, como o ENIAC, criado na década de 1940. Essas máquinas eram enormes, ocupavam salas inteiras e utilizavam milhares de válvulas eletrônicas. Apesar de limitados e caros, representaram um grande avanço tecnológico.
+
+                        Com o passar do tempo, novas tecnologias foram surgindo, como os transistores na década de 1950, os circuitos integrados na década de 1960 e os microprocessadores na década de 1970. Esses avanços permitiram que os computadores se tornassem menores, mais rápidos e mais acessíveis.
+
+                        Nas décadas de 1970 e 1980, surgiram os computadores pessoais, desenvolvidos por empresas como Apple, Microsoft e IBM. Esses computadores começaram a ser utilizados em casas, escolas e empresas, popularizando o uso da informática.
+
+                        A partir da década de 1990, com o crescimento da internet, a informática passou por uma grande transformação. Surgiram novas tecnologias como redes sociais, smartphones e computação em nuvem, conectando pessoas do mundo inteiro.
+
+                        Atualmente, vivemos na era da informação, onde a informática está presente em praticamente todos os aspectos da vida. Tecnologias como inteligência artificial, automação e sistemas digitais continuam evoluindo rapidamente, transformando a forma como trabalhamos, estudamos e nos comunicamos.
+
+                        Assim, a informática evoluiu de simples máquinas mecânicas feitas de engrenagens para sistemas altamente complexos baseados em inteligência artificial, tornando-se uma das áreas mais importantes do mundo moderno.
+                        </p>
+                        <button onclick="toggleTexto(this)">Saiba mais</button>
+                    </div>
+
+                    <div class="history-card">
+                        <h3>Era Digital</h3>
+                        <p>Computadores eletrônicos surgiram
+                        O ENIAC foi um dos primeiros computadores eletrônicos e ocupava uma sala inteira.
+                        Foi o início da revolução digital..</p>
+                        <p class="detalhes">
+                        Os computadores começaram a ser utilizados em empresas a partir das décadas de 1950 e 1960, quando grandes organizações perceberam que essas máquinas poderiam automatizar tarefas que antes eram feitas manualmente, como cálculos financeiros, controle de estoque e processamento de dados.
+
+                        No início, esses computadores eram enormes, caros e difíceis de operar. Apenas grandes empresas, bancos e governos tinham acesso a essa tecnologia. Um exemplo foi o uso de computadores por empresas que utilizavam máquinas da IBM, que dominava o mercado na época.
+
+                        Esses primeiros sistemas funcionavam com cartões perfurados, onde os dados eram inseridos manualmente. O processamento era lento comparado aos padrões atuais, mas já representava um grande avanço, pois reduzia erros humanos e aumentava a eficiência. 
+
+
+                        </p>
+                        <button onclick="toggleTexto(this)">Saiba mais</button>
+                    </div>
+
+                    <div class="history-card">
+                        <h3>Computadores Pessoais</h3>
+                        <p>Computadores chegaram às casas, Empresas como Apple e Microsoft popularizaram os computadores pessoais nas décadas de 70 e 80.</p>
+                        <p class="detalhes">
+                       Os primeiros computadores pessoais surgiram na década de 1970, quando a informática começou a sair das grandes empresas e universidades e passar para o uso doméstico. Antes disso, os computadores eram enormes, muito caros e ocupavam salas inteiras, sendo usados apenas por governos, bancos e grandes organizações.
+
+                        Um dos primeiros computadores pessoais foi o Altair 8800, lançado em 1975. Ele não tinha monitor, teclado ou mouse. Os usuários programavam o computador usando chaves e luzes na parte frontal da máquina. Mesmo sendo difícil de usar, ele ficou muito popular entre pessoas interessadas em tecnologia e programação.
+
+                        Pouco tempo depois surgiram empresas que se tornariam gigantes da tecnologia, como a Apple Inc. e a Microsoft. Em 1977, a Apple lançou o Apple II, um dos primeiros computadores pessoais com teclado, tela e mais fácil de usar. Ele foi muito importante para popularizar os computadores nas casas e nas escolas.
+
+                        Na década de 1980, a IBM lançou o IBM Personal Computer, que se tornou um padrão para computadores pessoais. Muitas empresas começaram a fabricar computadores compatíveis com o modelo da IBM, o que ajudou a espalhar ainda mais o uso dos PCs pelo mundo.
+                        </p>
+                        <button onclick="toggleTexto(this)">Saiba mais</button>
+                    </div>
+
+                    <div class="history-card">
+                        <h3>Informática Hoje</h3>
+                        <p>Internet e Inteligência Artificial
+                         Hoje usamos internet, smartphones, computação em nuvem e inteligência artificial no dia a dia..</p>
+                        <p class="detalhes">
+                       
+                        A informática atualmente está presente em praticamente todos os aspectos da vida das pessoas. Ela não se resume apenas a computadores, mas envolve internet, smartphones, inteligência artificial, redes, sistemas digitais e armazenamento em nuvem. A tecnologia passou a ser essencial para comunicação, trabalho, estudo, entretenimento e até para o funcionamento de cidades e empresas.
+
+                        Hoje em dia, a maioria das informações é armazenada de forma digital, em servidores e sistemas online, permitindo o acesso de qualquer lugar do mundo através da internet. Serviços como redes sociais, e-mails, plataformas de estudo e streaming só existem graças ao avanço da informática.
+
+                        Uma das áreas que mais cresce atualmente é a Inteligência Artificial, que permite que máquinas aprendam, tomem decisões e realizem tarefas que antes só humanos conseguiam fazer. A inteligência artificial é usada em assistentes virtuais, reconhecimento facial, carros autônomos, recomendações de filmes e músicas, atendimento automático e muitas outras áreas.
+
+                        Outra tecnologia importante é a Computação em Nuvem, que permite armazenar arquivos e rodar programas pela internet sem precisar instalar tudo no computador. Isso facilita o trabalho remoto, o armazenamento de dados e o uso de sistemas online.
+
+                        Também podemos destacar a Internet das Coisas, que conecta objetos do dia a dia à internet, como televisões, geladeiras, lâmpadas, carros e até relógios inteligentes.
+                        </p>
+                        <button onclick="toggleTexto(this)">Saiba mais</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        Desenvolvido por: <a href="https://instagram.com/reiicipandinii" target="_blank">
+    <I>Reice:)</I>
+</a>
+    </footer>
+</main>
+
+<script>
+function toggleMenu() {
+    let sidebar = document.getElementById("sidebar");
+    let main = document.getElementById("main");
+    let btn = document.getElementById("btn");
+
+    sidebar.classList.toggle("active");
+    main.classList.toggle("shift");
+
+    btn.innerHTML = sidebar.classList.contains("active") ? "✖" : "☰";
+}
+
+function toggleTexto(botao) {
+    let card = botao.parentElement;
+    let detalhes = card.querySelector(".detalhes");
+
+    if (detalhes.style.display === "block") {
+        detalhes.style.display = "none";
+        botao.innerText = "Saiba mais";
+    } else {
+        detalhes.style.display = "block";
+        botao.innerText = "Mostrar menos";
+    }
+}
+</script>
+
+</body>
+</html>

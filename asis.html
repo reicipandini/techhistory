@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistência TechServies</title>
+    <link rel="icon" href="logoo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #e0e7ff; /* tom claro geral */
+            color: #111827;
+        }
+
+        header {
+            background: linear-gradient(90deg, #2563eb, #3b82f6);
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.5);
+        }
+
+        header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            margin: 0;
+            letter-spacing: 2px;
+            color: #ffffff;
+            text-shadow: 0 0 10px #ffffff;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #93c5fd;
+        }
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #1e3a8a;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin-bottom: 30px;
+            color: #1f2937;
+        }
+
+        .btn-primary {
+            background: linear-gradient(145deg, #2563eb, #3b82f6);
+            color: #ffffff;
+            padding: 15px 30px;
+            border-radius: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+            transition: 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(145deg, #3b82f6, #2563eb);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.6);
+            transform: scale(1.05);
+        }
+
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 50px 20px;
+        }
+
+        .service-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            width: 250px;
+            border: 2px solid #2563eb;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.5);
+        }
+
+        .service-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+            color: #2563eb;
+        }
+
+        .service-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #1e3a8a;
+        }
+
+        .service-text {
+            font-size: 0.95rem;
+            color: #1f2937;
+        }
+
+        /* Formulário de Orçamento */
+        .budget {
+            background-color: #f0f4ff; /* tom mais claro */
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .budget h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: #1e3a8a;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .budget p {
+            color: #334155;
+            margin-bottom: 30px;
+        }
+
+        .budget form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .budget input, .budget select, .budget textarea {
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid #2563eb;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .budget textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .budget button {
+            background: linear-gradient(145deg, #2563eb, #3b82f6);
+            color: #ffffff;
+            padding: 15px;
+            font-weight: 700;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .budget button:hover {
+            background: linear-gradient(145deg, #3b82f6, #2563eb);
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: #1e293b;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+
+        @media (max-width: 600px) {
+            .services {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .service-card {
+                width: 90%;
+            }
+
+            .budget form {
+                width: 90%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Assistência TechServies</h1>
+        <nav>
+            <a href="#servicos">Serviços</a>
+            <a href="#budget">Orçamento</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>Consertamos e Desenvolvemos Tecnologia de Ponta</h2>
+        <p>Oferecemos soluções rápidas e seguras para <b>Smartphones</b>, <b>PCs de Alta Performance</b> e <b>sites</b>. Sua tecnologia em boas mãos com especialistas dedicados.</p>
+        <a href="#budget" class="btn-primary">FAZER ORÇAMENTO ↗</a>
+    </section>
+
+    <section class="services" id="servicos">
+        <div class="service-card">
+            <div class="service-icon">💻</div>
+            <div class="service-title">PCs e Laptops</div>
+            <div class="service-text">Manutenção e atualização de computadores de alto desempenho.</div>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">📱</div>
+            <div class="service-title">Smartphones</div>
+            <div class="service-text">Conserto de telas, baterias, software e mais para celulares.</div>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">🌐</div>
+            <div class="service-title">Desenvolvimento de Sites</div>
+            <div class="service-text">Criação de sites modernos, responsivos e futuristas para sua marca.</div>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">🛠️</div>
+            <div class="service-title">Suporte Técnico</div>
+            <div class="service-text">Assistência remota ou presencial para resolver problemas rapidamente.</div>
+        </div>
+    </section>
+
+    <!-- Aba de Orçamento -->
+    <section class="budget" id="budget">
+        <h2>Solicite seu Orçamento</h2>
+        <p>Preencha as informações abaixo e entraremos em contato com o melhor plano para você.</p>
+        <form>
+            <input type="text" name="nome" placeholder="Seu nome" required>
+            <input type="tel" name="telefone" placeholder="Seu telefone" required>
+            <select name="tipo_dispositivo" required>
+                <option value="">Tipo de dispositivo</option>
+                <option value="smartphone">Smartphone</option>
+                <option value="pc">PC / Laptop</option>
+                <option value="site">Desenvolvimento de Site</option>
+            </select>
+            <input type="text" name="problema" placeholder="Descreva o problema ou necessidade" required>
+            <textarea name="observacoes" placeholder="Informações adicionais (opcional)"></textarea>
+            <button type="submit">Enviar Orçamento ↗</button>
+        </form>
+    </section>
+ 
+
+<!-- Botão de voltar ao portal -->
+<div style="text-align: center; margin: 30px 0;">
+    <a href="portal.html" 
+       style="
+           background: linear-gradient(145deg, #2563eb, #3b82f6);
+           color: #ffffff;
+           padding: 12px 25px;
+           border-radius: 12px;
+           font-weight: 700;
+           text-decoration: none;
+           box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+           transition: 0.3s;
+           display: inline-block;
+       "
+       onmouseover="this.style.background='linear-gradient(145deg, #3b82f6, #2563eb)'; this.style.transform='scale(1.05)';"
+       onmouseout="this.style.background='linear-gradient(145deg, #2563eb, #3b82f6)'; this.style.transform='scale(1)';"
+    >
+        Voltar para o Portal ↩
+    </a>
+</div>
+
+<footer>
+    © 2026 Assistência TechServies - sua vida mais tecnologica.
+</footer>
+
+</body>
+</html>

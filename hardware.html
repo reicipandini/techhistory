@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hardware - TechHistory</title>
+<link rel="icon" href="logo.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg-principal: #f1f5f9;
+    --sidebar-bg: linear-gradient(180deg, #dbeafe, #bfdbfe);
+    --header-bg: #e0f2fe;
+    --texto-titulo: #0f172a;
+    --texto-corpo: #334155;
+    --detalhe-blue: #3b82f6;
+    --borda: #cbd5f5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-principal);
+    display: flex;
+}
+
+/* SIDEBAR */
+aside {
+    width: 260px;
+    background: var(--sidebar-bg);
+    border-right: 1px solid var(--borda);
+    position: fixed;
+    height: 100vh;
+    left: -260px;
+    transition: 0.3s;
+}
+
+aside.active {
+    left: 0;
+}
+
+.nav-item {
+    display: block;
+    padding: 12px;
+    color: var(--texto-corpo);
+    text-decoration: none;
+    border-radius: 8px;
+    margin: 8px;
+    background: rgba(255,255,255,0.4);
+    border: 1px solid var(--borda);
+}
+
+.nav-item:hover {
+    background: white;
+    color: var(--detalhe-blue);
+}
+
+/* MAIN */
+main {
+    flex: 1;
+    transition: 0.3s;
+}
+
+main.shift {
+    margin-left: 260px;
+}
+
+/* HEADER */
+header {
+    height: 65px;
+    background: var(--header-bg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    border-bottom: 1px solid var(--borda);
+}
+
+.menu-btn {
+    background: var(--detalhe-blue);
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.logo {
+    font-family: 'Orbitron', sans-serif;
+    color: #1e3a8a;
+    font-size: 1.3rem;
+}
+
+/* CONTEÚDO */
+.container {
+    max-width: 1300px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+}
+
+.history-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.history-card {
+    background: white;
+    border: 1px solid var(--borda);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-top: 4px solid #3b82f6;
+}
+
+.history-card h3 {
+    margin-bottom: 8px;
+}
+
+.history-card button {
+    margin-top: 10px;
+    background: #3b82f6;
+    border: none;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.history-card button:hover {
+    background: #2563eb;
+}
+
+.detalhes {
+    display: none;
+    margin-top: 10px;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 40px;
+    border-top: 1px solid var(--borda);
+    background: white;
+}
+
+.hero-box {
+    background: white;
+    border: 1px solid var(--borda);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.hero-box img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.content-text {
+    padding: 2rem;
+}
+
+.sidebar-brand {
+    padding: 2rem;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.3rem;
+    color: #1e3a8a;
+    border-bottom: 1px solid var(--borda);
+    letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+
+    .history-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    .hero-box img {
+        height: 200px;
+    }
+
+    header {
+        padding: 0 1rem;
+    }
+
+    .logo {
+        font-size: 1rem;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<aside id="sidebar">
+    <div class="sidebar-brand">TechHistory</div>
+
+    <div class="nav-group">
+        <a href="portal.html" class="nav-item">🏠 Início</a>
+        <a href="Hardware.html" class="nav-item">🖥️ Hardware</a>
+        <a href="soft.html" class="nav-item">💾 Software</a>
+        <a href="#" class="nav-item">🤖 IA</a>
+        <a href="asis.html" class="nav-item"> 🪛 manutençao</a>
+        <a href="game.html" class="nav-item"> 🎮 techgames</a>
+    </div>
+</aside>
+
+<main id="main">
+<header>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    <div class="logo">TECH HISTORY</div>
+    <div></div>
+</header>
+
+<div class="container">
+
+    <div class="hero-box">
+        <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7">
+        <div class="content-text">
+            <h1>Hardware</h1>
+            <p>
+            Hardware é toda a parte física do computador, incluindo processador, memória RAM,
+            placa-mãe, fonte de alimentação, armazenamento e sistemas de refrigeração.
+            </p>
+        </div>
+    </div>
+
+<div class="history-grid">
+
+<div class="history-card">
+<h3>Processador (CPU)</h3>
+<p>O cérebro do computador responsável pelos cálculos.</p>
+<p class="detalhes">
+O processador executa instruções, realiza cálculos e controla o funcionamento do computador.
+Possui núcleos e velocidade em GHz.
+</p>
+<button onclick="toggleTexto(this)">Saiba mais</button>
+</div>
+
+<div class="history-card">
+<h3>Memória RAM</h3>
+<p>Memória temporária usada pelos programas.</p>
+<p class="detalhes">
+Armazena dados temporários dos programas em uso.
+Quanto mais RAM, mais programas abertos sem travar.
+</p>
+<button onclick="toggleTexto(this)">Saiba mais</button>
+</div>
+
+<div class="history-card">
+<h3>HD e SSD</h3>
+<p>Responsáveis por armazenar arquivos.</p>
+<p class="detalhes">
+HD é mais lento e usa disco. SSD é mais rápido e moderno.
+</p>
+<button onclick="toggleTexto(this)">Saiba mais</button>
+</div>
+
+<div class="history-card">
+<h3>Placa de Vídeo (GPU)</h3>
+<p>Responsável pelos gráficos e imagens.</p>
+<p class="detalhes">
+Usada para jogos, vídeos, 3D e inteligência artificial.
+</p>
+<button onclick="toggleTexto(this)">Saiba mais</button>
+</div>
+
+<div class="history-card">
+<h3>Placa-mãe</h3>
+<p>Conecta todos os componentes do computador.</p>
+<p class="detalhes">
+Permite comunicação entre CPU, RAM, GPU e armazenamento.
+</p>
+<button onclick="toggleTexto(this)">Saiba mais</button>
+</div>
+
+<div class="history-card">
+<h3>Fonte de Alimentação</h3>
+<p>Responsável por fornecer energia ao computador.</p>
+<p class="detalhes">
+Distribui energia para todos os componentes.
+</p>
+<button onclick="toggleTexto(this)">Saiba mais</button>
+</div>
+
+<div class="history-card">
+<h3>Refrigeração (Coolers)</h3>
+<p>Fans, Air Coolers e Water Coolers.</p>
+<p class="detalhes">
+Servem para resfriar o computador e evitar superaquecimento.
+</p>
+<button onclick="toggleTexto(this)">Saiba mais</button>
+</div>
+
+</div>
+
+<footer>
+Desenvolvido por: <a href="https://instagram.com/reiicipandinii"><I>Reice:)</I></a>  
+</footer>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</div>
+</main>
+
+<script>
+function toggleMenu(){
+let s=document.getElementById("sidebar");
+let m=document.getElementById("main");
+s.classList.toggle("active");
+m.classList.toggle("shift");
+}
+
+function toggleTexto(btn){
+let d=btn.parentElement.querySelector(".detalhes");
+d.style.display=d.style.display==="block"?"none":"block";
+btn.innerText=d.style.display==="block"?"Mostrar menos":"Saiba mais";
+}
+</script>
+
+</body>
+</html>

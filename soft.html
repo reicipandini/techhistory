@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Software - TechHistory</title>
+<link rel="icon" href="logo.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg-principal: #f1f5f9;
+    --sidebar-bg: linear-gradient(180deg, #dbeafe, #bfdbfe);
+    --header-bg: #e0f2fe;
+    --texto-titulo: #0f172a;
+    --texto-corpo: #334155;
+    --detalhe-blue: #3b82f6;
+    --borda: #cbd5f5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-principal);
+    display: flex;
+}
+
+/* SIDEBAR */
+aside {
+    width: 260px;
+    background: var(--sidebar-bg);
+    border-right: 1px solid var(--borda);
+    position: fixed;
+    height: 100vh;
+    left: -260px;
+    transition: 0.3s;
+}
+
+aside.active {
+    left: 0;
+}
+
+.sidebar-brand {
+    padding: 2rem;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.3rem;
+    color: #1e3a8a;
+    border-bottom: 1px solid var(--borda);
+}
+
+.nav-item {
+    display: block;
+    padding: 12px;
+    color: var(--texto-corpo);
+    text-decoration: none;
+    border-radius: 8px;
+    margin: 8px;
+    background: rgba(255,255,255,0.4);
+    border: 1px solid var(--borda);
+}
+
+.nav-item:hover {
+    background: white;
+    color: var(--detalhe-blue);
+}
+
+/* MAIN */
+main {
+    flex: 1;
+    transition: 0.3s;
+}
+
+main.shift {
+    margin-left: 260px;
+}
+
+/* HEADER */
+header {
+    height: 65px;
+    background: var(--header-bg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    border-bottom: 1px solid var(--borda);
+}
+
+.menu-btn {
+    background: var(--detalhe-blue);
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.logo {
+    font-family: 'Orbitron', sans-serif;
+    color: #1e3a8a;
+    font-size: 1.3rem;
+}
+
+/* CONTEÚDO */
+.container {
+    max-width: 1300px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+}
+
+.history-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.history-card {
+    background: white;
+    border: 1px solid var(--borda);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-top: 4px solid #3b82f6;
+}
+
+.history-card button {
+    margin-top: 10px;
+    background: #3b82f6;
+    border: none;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.history-card button:hover {
+    background: #2563eb;
+}
+
+.detalhes {
+    display: none;
+    margin-top: 10px;
+}
+
+/* HERO */
+.hero-box {
+    background: white;
+    border: 1px solid var(--borda);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.hero-box img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.content-text {
+    padding: 2rem;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 40px;
+    border-top: 1px solid var(--borda);
+    background: white;
+}
+</style>
+</head>
+
+<body>
+
+<aside id="sidebar">
+    <div class="sidebar-brand">TechHistory</div>
+    <a href="portal.html" class="nav-item">🏠 Início</a>
+    <a href="hardware.html" class="nav-item">🖥️ Hardware</a>
+    <a href="software.html" class="nav-item">💾 Software</a>
+    <a href="ia.html" class="nav-item">🤖 IA</a>
+    <a href="asis.html" class="nav-item"> 🪛 manutençao</a>
+    <a href="game.html" class="nav-item"> 🎮 techgames</a>
+</aside>
+
+<main id="main">
+<header>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    <div class="logo">TECH HISTORY</div>
+    <div></div>
+</header>
+
+<div class="container">
+
+<div class="hero-box">
+    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c">
+    <div class="content-text">
+        <h1>Software</h1>
+        <p>
+        Software é a parte lógica do computador, ou seja, os programas, sistemas e aplicativos
+        que fazem o computador funcionar e permitem que o usuário realize tarefas.
+        </p>
+    </div>
+</div>
+
+<div class="history-grid">
+
+<div class="history-card">
+<h3>Sistema Operacional</h3>
+<p>Responsável por controlar o computador.</p>
+<p class="detalhes">
+O sistema operacional é o software mais importante de um computador. Ele gerencia o hardware,
+arquivos, memória, programas e permite que o usuário interaja com o computador.
+Exemplos: Windows, Linux e macOS. Sem o sistema operacional, o computador não funciona.
+Ele controla teclado, mouse, tela, armazenamento e todos os programas instalados.
+</p>
+<button onclick="toggleTexto(this)">Saiba mais</button>
+</div>
+
+<div class="history-card">
+<h3>Aplicativos</h3>
+<p>Programas usados pelo usuário.</p>
+<p class="detalhes">
+Aplicativos são programas criados para realizar tarefas específicas, como editar textos,
+navegar na internet, assistir vídeos, jogar ou programar.
+Exemplos: Google Chrome, Word, Excel, Photoshop, jogos e editores de vídeo.
+Existem aplicativos para computadores e celulares.
+</p>
+<button onclick="toggleTexto(this)">Saiba mais</button>
+</div>
+
+<div class="history-card">
+<h3>Software Livre</h3>
+<p>Programas que podem ser modificados.</p>
+<p class="detalhes">
+Software livre é aquele que qualquer pessoa pode usar, estudar, modificar e distribuir.
+O código fonte é aberto para desenvolvedores.
+Exemplos: Linux, LibreOffice, GIMP.
+Esse tipo de software ajuda no desenvolvimento da tecnologia e educação.
+</p>
+<button onclick="toggleTexto(this)">Saiba mais</button>
+</div>
+
+<div class="history-card">
+<h3>Software Pago</h3>
+<p>Programas comerciais.</p>
+<p class="detalhes">
+Software pago é desenvolvido por empresas e precisa de licença para uso.
+Exemplos: Windows, Microsoft Office, Adobe Photoshop.
+Normalmente possuem suporte técnico, atualizações e mais recursos.
+</p>
+<button onclick="toggleTexto(this)">Saiba mais</button>
+</div>
+
+<div class="history-card">
+<h3>Linguagens de Programação</h3>
+<p>Usadas para criar softwares.</p>
+<p class="detalhes">
+As linguagens de programação são usadas para criar programas e sistemas.
+Exemplos: Python, Java, C++, JavaScript.
+Elas permitem desenvolver sites, aplicativos, jogos, inteligência artificial e sistemas.
+</p>
+<button onclick="toggleTexto(this)">Saiba mais</button>
+</div>
+
+<div class="history-card">
+<h3>Bancos de Dados</h3>
+<p>Armazenam informações.</p>
+<p class="detalhes">
+Bancos de dados armazenam informações organizadas como usuários, produtos,
+notas escolares, contas bancárias e sistemas de empresas.
+Exemplos: MySQL, PostgreSQL, Oracle.
+São muito importantes para sistemas e sites.
+</p>
+<button onclick="toggleTexto(this)">Saiba mais</button>
+</div>
+
+</div>
+
+<footer>
+<p>Desenvolvido por <a href="https://instagram.com/reiicipandinii"><I>Reice:)</I></p>
+</footer>
+
+</div>
+</main>
+
+<script>
+function toggleMenu(){
+let s=document.getElementById("sidebar");
+let m=document.getElementById("main");
+s.classList.toggle("active");
+m.classList.toggle("shift");
+}
+
+function toggleTexto(btn){
+let d=btn.parentElement.querySelector(".detalhes");
+d.style.display=d.style.display==="block"?"none":"block";
+btn.innerText=d.style.display==="block"?"Mostrar menos":"Saiba mais";
+}
+</script>
+
+</body>
+</html>
